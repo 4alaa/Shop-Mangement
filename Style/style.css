@@ -1,0 +1,275 @@
+*
+{
+    box-sizing: border-box;
+}
+body
+{
+    margin: 0;
+    padding: 0;
+}
+@font-face {
+    font-family: "salsa";
+    src: url(../webfonts/Salsa-Regular.ttf);
+}
+@font-face {
+  font-family: "lob";
+  src: url(../webfonts/Lobster-Regular.ttf);
+}
+/* ------------- */
+/* .Total
+{
+
+} */
+.Total #Total
+{
+  background-color: tomato;
+  height: 55px;
+  padding: 10px;
+}
+.Total span p
+{
+  position: relative;
+  top:5.5px
+}
+.bg-tomato
+{
+  background-color: tomato !important;
+}
+.bg-gray
+{
+  background-color: gray !important;
+}
+#Result
+{
+  padding: 0;
+}
+
+a
+{
+  text-decoration: none;
+  cursor: pointer;
+}
+.arrow-up
+{
+  background-color: rgba(0, 0, 0, 0.8);
+  color: rgb(23, 140, 156);
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  left: 5px;
+  bottom: 10px;
+}
+.modeOfPage
+{
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  right: 5px;
+  bottom: 10px;
+}
+
+
+.bg-moon
+{
+  background-color: rgb(41,41,41);
+
+}
+.fa-sun
+{
+  color: yellow;
+}
+.moon-text
+{
+  color: white;
+}
+
+
+
+
+/* table grid */
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #f8f8f8;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+
+table th,
+table td {
+  padding: .625em;
+  text-align: center;
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 1000px) {
+  
+  .container
+  {
+    width: 83% !important;
+    margin: auto;
+  }
+
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+  
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+  
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+  
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+  
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+  
+  table td:last-child {
+    border-bottom: 0;
+  }
+
+
+}
+
+@media screen and (max-width:500px) {
+  #searchByName,#searchByCategory
+  {
+    font-size: 14.5px;
+  }
+
+
+}
+
+
+
+
+
+/* yes no buttons */
+.buttons {
+  display: flex;
+  width: 150px;
+  gap: 10px;
+  --b: 5px;  
+  --h: 1.8em; 
+  position: relative;
+  left: 10px;
+}
+
+.buttons button {
+  --_c: #88C100;
+  flex: calc(1.25 + var(--_s,0));
+  min-width: 0;
+  font-size: 25px;
+  font-weight: bold;
+  height: var(--h);
+  cursor: pointer;
+  color: var(--_c);
+  border: var(--b) solid var(--_c);
+  background: 
+    conic-gradient(at calc(100% - 1.3*var(--b)) 0,var(--_c) 209deg, #0000 211deg) 
+    border-box;
+  clip-path: polygon(0 0,100% 0,calc(100% - 0.577*var(--h)) 100%,0 100%);
+  padding: 0 calc(0.288*var(--h)) 0 0;
+  margin: 0 calc(-0.288*var(--h)) 0 0;
+  box-sizing: border-box;
+  transition: flex .4s;
+}
+.buttons button + button {
+  --_c: #FF003C;
+  flex: calc(.75 + var(--_s,0));
+  background: 
+    conic-gradient(from -90deg at calc(1.3*var(--b)) 100%,var(--_c) 119deg, #0000 121deg) 
+    border-box;
+  clip-path: polygon(calc(0.577*var(--h)) 0,100% 0,100% 100%,0 100%);
+  margin: 0 0 0 calc(-0.288*var(--h));
+  padding: 0 0 0 calc(0.288*var(--h));
+}
+.buttons button:focus-visible {
+  outline-offset: calc(-2*var(--b));
+  outline: calc(var(--b)/2) solid #000;
+  background: none;
+  clip-path: none;
+  margin: 0;
+  padding: 0;
+}
+.buttons button:focus-visible + button {
+  background: none;
+  clip-path: none;
+  margin: 0;
+  padding: 0;
+}
+.buttons button:has(+ button:focus-visible) {
+  background: none;
+  clip-path: none;
+  margin: 0;
+  padding: 0;
+}
+button:hover,
+button:active:not(:focus-visible) {
+  --_s: .75;
+}
+button:active {
+  box-shadow: inset 0 0 0 100vmax var(--_c);
+  color: #fff;
+}
+
+
+

@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="alaa shamms">
+    <meta name="description" content="create,update,delete,read">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Project</title>
+    <!-- link of crud favico -->
+    <link rel="shortcut icon" href="img.icons8.png" type="image/x-icon">
+
+    <!-- link of fontawesome -->
+    <link rel="stylesheet" href="Style/all.min.css">
+    <!-- link of bootstrap -->
+    <link rel="stylesheet" href="Style/bootstrap.min.css">
+    <!-- link of css -->
+    <link rel="stylesheet" href="Style/style.css">
+</head>
+<body>
+    
+
+    <div class="container">
+
+        <div class="row">
+            
+            <h2 class="mt-4 text-center">Product Management System</h2>
+
+            <form class="mt-4 d-flex flex-column gap-3">
+                <input type="text" placeholder="Product Name" required class="form-control" name="ProductName" id="ProductName" oninput="productNameValidation()">
+                <div class="rounded-pill p-2  bg-danger d-none" id="error-name">
+                    <span class="ms-3 text-white fs-6">
+                        You should start with small character from [a-z] and between 3 to 9 any inputs
+                    </span>
+                </div>
+                <input type="text" placeholder="Price" required class="form-control mt-2" name="ProductName" id="Price" oninput="changeColor(),productPriceValidation()">
+                <div class="rounded-pill p-2  bg-danger d-none" id="error-price">
+                    <span class="ms-3 text-white fs-6">
+                        You should enter number 
+                    </span>
+                </div>
+                <input type="text" placeholder="Taxes" required class="form-control" name="ProductName" id="Taxes" oninput="changeColor(),productTaxsValidation()">
+                <div class="rounded-pill p-2  bg-danger d-none" id="error-tax">
+                    <span class="ms-3 text-white fs-6">
+                        You should enter number 
+                    </span>
+                </div>
+                <input type="text" placeholder="Ads" required class="form-control" name="ProductName" id="Ads" oninput="changeColor(),productAdsValidation()">
+                <div class="rounded-pill p-2  bg-danger d-none" id="error-ads">
+                    <span class="ms-3 text-white fs-6">
+                        You should enter number 
+                    </span>
+                </div>
+                <input type="text" placeholder="Discount" required class="form-control" name="ProductName" id="Discount" oninput="changeColor(),productDiscountValidation()">
+                <div class="rounded-pill p-2  bg-danger d-none" id="error-discount">
+                    <span class="ms-3 text-white fs-6">
+                        You should enter number 
+                    </span>
+                </div>
+
+
+
+
+                <div class="Total d-flex justify-content-center align-items-center" >
+                    <span class=" rounded-pill" id="Total">
+                      
+                        <p>  
+                            Total : <span id="Result" ></span>
+                        </p>
+                    </span>
+                </div>
+
+
+                <input type="number" placeholder="Count" required class="form-control" name="Count" id="Count" oninput="productCounttValidation()" >
+                <div class="rounded-pill p-2  bg-danger d-none" id="error-count">
+                    <span class="ms-3 text-white fs-6">
+                        You should enter number 
+                    </span>
+                </div>
+
+                <input type="text" placeholder="Category" required class="form-control" name="Category" id="Category" oninput="productCategoryValidation()"  >
+                <div class="rounded-pill p-2  bg-danger d-none" id="error-category">
+                    <span class="ms-3 text-white fs-6">
+                        You should start with small character from [a-z] and between 3 to 9 any inputs
+                    </span>
+                </div>
+
+            </form>
+
+
+
+        </div>
+        <button class="btn btn-outline-success mt-4" onclick="addProduct()" id="Add"><i class="fa-solid fa-square-plus me-2"></i>Add product</button>
+        <button class="btn btn-outline-primary mt-4 mx-2" onclick="clearInputs()"> <i class="fa-solid fa-broom me-2"></i>clear inputs</button>
+        <button class="btn btn-outline-success mt-4 d-none" onclick="updateProduct()" id="update"><i class="fa-solid fa-pen-clip me-2"></i>update product <span id="productUpdateNum"></span></button>
+
+
+
+
+
+        <input type="text" placeholder="Search By Name" class="form-control mt-5" id="Search" oninput="searchMode()">
+        <div class="serch_btns d-flex gap-2 justify-content-center  pt-4">
+            <button class="btn btn-outline-secondary" id="searchByName" onclick="searchByName()"><i class="fa-solid fa-magnifying-glass-arrow-right me-1"></i>Search by name</button>
+            <button class="btn btn-outline-secondary" id="searchByCategory" onclick="searchByCategory()"><i class="fa-brands fa-searchengin me-1"></i>Search by Category</button>
+        </div>
+
+
+        <button class="btn btn-outline-danger mt-4 ms-2 d-none position-relative start-50 translate-middle-x  " onclick="sure()" id="deleteAllProducts"><i class="fa-solid fa-dumpster me-2"></i>Delete All <span id="numProducts"></span></button>
+        <div class="buttons mx-auto mt-3 d-none">
+            <button onclick="deleteAllProducts()">Yes</button>
+            <button onclick="sure()">No</button>
+          </div>
+
+
+        <h6 class=" mt-5 mb-3" id="totalText">Total items in the table: <span id="totalItems" class=""></span></h6>
+        <table class="table table-hover text-center  mt-2  table-striped-columns" >
+            <thead>
+                <th>Index</th>
+                <th>Name</th>
+                <th>Price</th>
+                <th>taxs</th>
+                <th>adds</th>
+                <th>discount</th>
+                <th>Total</th>
+                <th>Category</th>
+                <th>Edit</th>
+                <th>Delete</th>
+            </thead>
+            <tbody id="tableBody" >
+
+            </tbody>
+        </table>
+
+
+
+
+
+    </div>
+
+    <a onclick="arrowUp()" >
+        <div class="arrow-up">
+            <i class="fa-solid fa-plane-up"></i>
+        </div>
+    </a>
+ 
+
+
+    <a >
+        <div class="modeOfPage">
+            <i class="fa-solid fa-sun " id="sun" onclick="changePagModeMoon()" title="sun mood"></i>
+            <i class="fa-solid fa-moon d-none" id="moon" onclick="changePagModeSun()" title="moon mood"></i>
+        </div>
+        
+    </a>
+
+
+    
+
+
+   <!-- link of bootsrap js  -->
+   <script src="JS/bootstrap.bundle.min.js"></script>
+    <!-- link of mine js  -->
+   <script src="JS/index.js"></script>
+</body>
+</html>
